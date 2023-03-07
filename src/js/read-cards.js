@@ -3,33 +3,62 @@
 
 //import { values } from 'lodash';
 import { STORAGE_KEY_READ } from './constants';
+let arrayKeys=[];
+for (i=0; i<localStorage.length; i++){
+if (localStorage.key(i) !== 'favoriteNews'){
+  arrayKeys.push(localStorage.key(i))
+
+}}
+console.log(arrayKeys)
+//const result = words.filter(word => word.length > 6);
+
 
 function createMarkup2(dateDiv){
+      
+  // for (i=0; i<dateDiv.length; i++)
+  //     {
 
+      
 const markup2 = dateDiv
-    .map(() => {
+    .map((element,index) => {
+       
       return `
-      <div>
-      <p>
-      "${localStorage.key(0)}"
-      </p>
-      </div>
+      <li class = "date-read container">
+      
+      ${arrayKeys[index]}
+        <button type = "button" class = "arrow"> <svg class = "read-arrow visually-hidden" width="14" height="14" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.645 -7.19052e-08L-2.83151e-07 1.52227L7 8L14 1.52227L12.355 -5.40054e-07L7 4.94467L1.645 -7.19052e-08Z" fill="#4440F6"/>
+</svg>
+<svg class = "read-arrow" width="14" height="14" viewBox="0 0 14 8"  xmlns="http://www.w3.org/2000/svg">
+<path d="M1.645 8L-2.83151e-07 6.47773L7 3.0598e-07L14 6.47773L12.355 8L7 3.05533L1.645 8Z" fill="#4440F6"/>
+</svg>
+</button>
+      </li>
+      
       `;
     })
     .join('');
-  readPage2.insertAdjacentHTML('beforeend', markup2);
-  
+
+    readPage2.insertAdjacentHTML('beforeend', markup2);
   }
+  
 
 
+  //console.log(markup2,'iiiiii')
 
+// function submitHandle(e){
+// readPage.classList.add("visually-hidden")
+
+// }
+  
 
 //_______
 function createMarkup(news) {
  // const idFromStorage = localStorage.getItem(STORAGE_KEY_READ, 'id');
   //console.log(idFromStorage);
   
-  
+  // for (let index = 0; index < localStorage.length; index++) {
+  //   console.log(localStorage.key(index))
  
   const markup = news
     .map(({ imgUrl, category, title, text, date, readMoreLink, id }) => {
@@ -73,32 +102,26 @@ function createMarkup(news) {
   readPage.insertAdjacentHTML('beforeend', markup);
   
 }
-
+let parsedNews=[];
 const readPage = document.querySelector('.read-page-wrap');
 const readPage2 = document.querySelector('.dateDiv');
-const parsedNews = JSON.parse(localStorage.getItem(STORAGE_KEY_READ)) || [];
+for (i=0; i<localStorage.length; i++){
+  if(parsedNews[i] !== "favoriteNews"){
+const parsedNews2 = JSON.parse(localStorage.getItem(localStorage.key(i))) || [];
+parsedNews.push(parsedNews2);}
 
-//console.log(parsedNews[0].id)
-
-
-
-
-
-
-// const noDataBlock = document.querySelector('.no-data .error');
-//     const containerCardList = document.querySelector('.container.list__cards');
-// if (parsedNews.length = 0)
-// {noDataBlock.querySelector('.title-error').innerHTML =
-// 'We haven’t found <br> favorite news';
-// noDataBlock.classList.remove(VISUALLY_HIDDEN_CLASS);
-// containerCardList.classList.add(VISUALLY_HIDDEN_CLASS);
-// } else {
-// noDataBlock.classList.add(VISUALLY_HIDDEN_CLASS);
-// containerCardList.classList.remove(VISUALLY_HIDDEN_CLASS);
-// }
- 
+console.log(localStorage.key(i),"11111")
+}
 
 
 
-createMarkup(parsedNews, readPage);
+
+
+for (i=0; i<arrayKeys.length; i++){
+  if(localStorage.key(i) !== "favoriteNews")
+createMarkup(parsedNews[i], readPage);
+
+}
+
 createMarkup2(parsedNews, readPage);
+

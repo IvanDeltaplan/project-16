@@ -73,5 +73,25 @@ if (idFrom.includes(readObj.id)){
   //console.log(idFrom, "ele2")
 //console.log(readfromobj)
 
+// const arrowBtn = document.querySelector(".date-read");
+//  const divHide = document.querySelector('.read-page-wrap');
+// console.log(arrowBtn)
+// arrowBtn.addEventListener('click', submitHandle)
+// function submitHandle (e){
 
-  
+// console.log("arrr")
+//  }
+ 
+
+//   // Get the name of the first key in local storage
+//   for (let i=0; i<localStorage.)
+// var firstKey = localStorage.key(0);
+
+// // Check if any keys exist in local storage
+// if (firstKey !== null) {
+//   // Do something with the key name
+//   console.log(firstKey);
+// } else {
+//   // Handle the case where no keys exist in local storage
+//   console.log("There are no keys in local storage");
+// }
